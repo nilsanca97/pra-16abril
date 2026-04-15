@@ -40,7 +40,6 @@ export class Register {
     const myUser: User = { username, name, email };
     this.userService.setUser(myUser);
     this.registerForm.reset();
-    this.authService.register({ email, password });
 		const user = await this.authService.register({ email, password });
 		if (user) {
 			this.userService.setTokenId(user);

@@ -1,5 +1,8 @@
 import { Routes } from '@angular/router';
 
+// const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
+// const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
+
 export const routes: Routes = [
     {
         path: '',
