@@ -2,6 +2,8 @@ import { Component, signal, inject, ChangeDetectionStrategy } from '@angular/cor
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { User } from '../../models/interfaces';
 import { UserService } from '../../services/user.service';
+import { AuthService } from '../../services/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,9 +13,11 @@ import { UserService } from '../../services/user.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Register {
-  private fb = inject(FormBuilder);
 
+  private fb = inject(FormBuilder);
   private userService = inject(UserService);
+  private authService = inject(AuthService);
+  private router = inject(Router);
 
   submitted = signal(false);
   loading = signal(false);
@@ -21,21 +25,31 @@ export class Register {
   registerForm = this.fb.group({
     username: ['', Validators.required],
     name: ['', Validators.required],
-    email: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
-  register() {
+  async register() {
     this.submitted.set(true);
     if (this.registerForm.invalid) {
       this.submitted.set(false);
       return;
     }
     this.loading.set(true);
-    const { username, name, email } = this.registerForm.value;
-    const user: User = { username, name, email };
-    this.userService.setUser(user);
+    const { username, name, email, password } = this.registerForm.value;
+    const myUser: User = { username, name, email };
+    this.userService.setUser(myUser);
     this.registerForm.reset();
+    this.authService.register({ email, password });
+		const user = await this.authService.register({ email, password });
+		if (user) {
+			this.userService.setTokenId(user);
+			this.router.navigateByUrl('/home', { replaceUrl: true });
+		} else {
+			console.error('Registration failed');
+		}
     this.submitted.set(false);
     this.loading.set(false);
   }
+
 }
