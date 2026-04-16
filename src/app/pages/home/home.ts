@@ -1,18 +1,20 @@
 import { Component, signal, computed, ChangeDetectionStrategy, inject } from '@angular/core';
-import { Router, RouterLink } from "@angular/router";
+import { Router } from "@angular/router";
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Pedido } from '../../models/interfaces';
 import { PedidoService } from '../../services/pedido.service';
 import { ListadoPedidos } from '../../shared/components/listado-pedidos/listado-pedidos';
 import { AuthService } from '../../services/auth';
+import { Header } from '../../shared/components/header/header';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, ReactiveFormsModule, ListadoPedidos],
+  imports: [ReactiveFormsModule, ListadoPedidos, Header],
   templateUrl: './home.html',
   styleUrl: './home.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
 export class Home {
   
   private fb = inject(FormBuilder);
@@ -64,11 +66,6 @@ export class Home {
     this.pedidoForm.reset();
     this.submitted.set(false);
     this.loading.set(false);
-  }
-
-  logout() {
-    this.authService.logout();
-    this.router.navigateByUrl('/login', { replaceUrl: true });
   }
 
 }

@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth';
+import { Header } from '../../shared/components/header/header';
 
 @Component({
   selector: 'app-about',
-  imports: [RouterLink],
+  imports: [RouterLink, Header],
   templateUrl: './about.html',
   styleUrl: './about.scss',
 })
