@@ -1,5 +1,11 @@
 <h1>Carrito</h1>
 
+<a [routerLink]="'/about'">Ves a about</a>
+
+<a [routerLink]="'/carrito'">Go to carrito</a>
+
+<a (click)="logout()">Logout</a>
+
 <abbr title="Carrito de compras">Carrito</abbr>
 
 <app-listado-pedidos [titulo]="'Carrito'"></app-listado-pedidos>

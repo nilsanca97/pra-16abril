@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'app-about',
@@ -7,4 +8,14 @@ import { RouterLink } from '@angular/router';
   templateUrl: './about.html',
   styleUrl: './about.scss',
 })
-export class About {}
+export class About {
+
+  authService = inject(AuthService);
+  router = inject(Router);
+
+  logout() {
+    this.authService.logout();
+    this.router.navigateByUrl('/login', { replaceUrl: true });
+  }
+
+}
