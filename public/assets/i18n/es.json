@@ -1,0 +1,11 @@
+
+{ 
+        "HOME": {
+                "SIGNAL_BASICO": "señal básica",
+                "AÑADIR_PEDIDOS": "Añadir pedidos"
+        }, 
+        "ABOUT": {
+                "SIGNAL_BASICO": "señal básica",
+                "TEXTO_ABOUT": "Acerca de nosotros"
+        }
+}

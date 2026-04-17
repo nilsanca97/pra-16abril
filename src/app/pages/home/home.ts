@@ -6,10 +6,11 @@ import { PedidoService } from '../../services/pedido.service';
 import { ListadoPedidos } from '../../shared/components/listado-pedidos/listado-pedidos';
 import { AuthService } from '../../services/auth';
 import { Header } from '../../shared/components/header/header';
+import { TranslateDirective, TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
-  imports: [ReactiveFormsModule, ListadoPedidos, Header],
+  imports: [ReactiveFormsModule, ListadoPedidos, Header, TranslateDirective, TranslatePipe],
   templateUrl: './home.html',
   styleUrl: './home.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

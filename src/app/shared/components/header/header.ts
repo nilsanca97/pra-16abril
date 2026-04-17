@@ -1,15 +1,17 @@
 import { Component, inject, input } from '@angular/core';
 import { RouterLink, Router} from '@angular/router';
 import { AuthService } from '../../../services/auth';
+import { TranslateDirective, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink],
+  imports: [RouterLink, TranslateDirective],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
 
 export class Header {
+  translateService = inject(TranslateService);
   
   titulo = input<string>('');
   
@@ -19,5 +21,8 @@ export class Header {
   logout() {
     this.authService.logout();
     this.router.navigateByUrl('/login', { replaceUrl: true });
+  }
+  changeLanguage(lang: string) {
+    this.translateService.use(lang);
   }
 }

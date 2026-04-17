@@ -19,7 +19,7 @@ export class App {
   textoParaMostrar = 'Hola soy un contenido dinámico desde angular';
   
     constructor() {
-        this.translate.addLangs(['es', 'cat', 'en']);
+        this.translate.addLangs(['es', 'ca', 'en']);
         this.translate.setFallbackLang('es');
         this.translate.use('es');
     }

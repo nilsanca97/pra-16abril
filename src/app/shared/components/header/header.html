@@ -1,9 +1,17 @@
 <h1>{{ titulo() }}</h1>
 <p></p>
-<a [routerLink]="'/about'">Go to about</a>
+<a [routerLink]="'/about'"> 
+    {{ 'TEXTO_ABOUT' | translate }}
+</a>
 <p></p>
 <a [routerLink]="'/carrito'">Go to carrito</a>
 <p></p>
 <a [routerLink]="'/home'">Go Home</a>
 <p></p>
 <a (click)="logout()">Logout</a>
+
+<div>
+    <button (click)="changeLanguage('es')">Español</button>
+    <button (click)="changeLanguage('ca')">Català</button>
+    <button (click)="changeLanguage('en')">English</button>
+</div>

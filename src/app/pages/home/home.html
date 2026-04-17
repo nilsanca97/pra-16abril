@@ -1,6 +1,7 @@
 <app-header [titulo]="'Home'"></app-header>
 
-<h2>Signal básico</h2>
+<h2 [translate]="'HOME.SIGNAL_BASICO'"></h2>
+<h2>{{ 'HOME.SIGNAL_BASICO' | translate }}</h2>
 
 <p>Count: {{ count() }}</p>
 <p>Doubled: {{ doubled() }}</p>
@@ -9,7 +10,7 @@
 
 <p>Total: {{ total() }}</p>
 
-<h1>Añadir pedidos</h1>
+<h1 [translate]="'AÑADIR_PEDIDOS'"></h1>
 
 <form [formGroup]="pedidoForm">
   <label for="nombre">nombre:</label>
