@@ -1,11 +1,11 @@
 import { Component, inject, input } from '@angular/core';
 import { RouterLink, Router} from '@angular/router';
 import { AuthService } from '../../../services/auth';
-import { TranslateDirective, TranslateService } from '@ngx-translate/core';
+import { TranslateDirective, TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, TranslateDirective],
+  imports: [RouterLink, TranslatePipe],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
