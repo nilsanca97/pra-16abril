@@ -5,7 +5,7 @@ import { Header } from '../../shared/components/header/header';
 
 @Component({
   selector: 'app-about',
-  imports: [RouterLink, Header],
+  imports: [Header],
   templateUrl: './about.html',
   styleUrl: './about.scss',
 })
